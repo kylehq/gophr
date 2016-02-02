@@ -20,8 +20,7 @@ var errorTemplate = `
 func RenderTemplate(w http.ResponseWriter, request *http.Request, name string, data interface{}) {
 	err := templates.ExecuteTemplate(w, name, data)
 	if err != nil {
-		w.Header().Add("Content-Type", "text/html; charset=utf-8")
-		tmpl, _ := template.New("error").Parse(fmt.Sprintf(errorTemplate, name, err.Error()))
-		tmpl.Execute(w, nil)
+		w.WriteHeader(http.StatusInternalError)
+		fmt.Fprintf(w, errorTemplate, name, err.Error())
 	}
 }
