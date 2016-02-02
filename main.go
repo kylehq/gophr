@@ -6,7 +6,7 @@ func main() {
 	mux := http.NewServeMux()
 
 	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		RenderTemplate(w, r, "index/homeasd", nil)
+		RenderTemplate(w, r, "index/home", nil)
 	})
 
 	mux.Handle(
