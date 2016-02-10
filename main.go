@@ -8,21 +8,17 @@ import (
 
 func main() {
 	unauthenticatedRouter := NewRouter()
+	unauthenticatedRouter.ServeFiles("/assets/*filepath", http.Dir("assets/"))
+
 	unauthenticatedRouter.GET("/", HandleHome)
 	unauthenticatedRouter.GET("/register", HandleUserNew)
 
 	authenticatedRouter := NewRouter()
+	authenticatedRouter.ServeFiles("/assets/*filepath", http.Dir("assets/"))
 	authenticatedRouter.GET("/images/new", HandleImageNew)
-
-	mux := http.NewServeMux()
-	mux.Handle(
-		"/assets/",
-		http.StripPrefix("/assets/", http.FileServer(http.Dir("assets/"))),
-	)
 
 	middleware := Middleware{}
 	middleware.Add(unauthenticatedRouter)
-	middleware.Add(mux)
 	middleware.Add(http.HandlerFunc(AuthenticateRequest))
 	middleware.Add(authenticatedRouter)
 
