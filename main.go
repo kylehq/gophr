@@ -1,31 +1,29 @@
 package main
 
 import (
+	"log"
 	"net/http"
 
-	"github.com/julienschmidt/httprouter"
 	"fmt"
 	"time"
+
+	"github.com/julienschmidt/httprouter"
 )
 
 func main() {
-	unauthenticatedRouter := NewRouter()
-	unauthenticatedRouter.ServeFiles("/assets/*filepath", http.Dir("assets/"))
-	unauthenticatedRouter.GET("/", HandleHome)
-	unauthenticatedRouter.GET("/register", HandleUserNew)
 
-	authenticatedRouter := NewRouter()
-	authenticatedRouter.ServeFiles("/assets/*filepath", http.Dir("assets/"))
-	authenticatedRouter.GET("/images/new", HandleImageNew)
-
+	router := NewRouter()
+	router.Handle("GET", "/", HandleHome)
+	router.ServeFiles(
+		"/assets/*filepath",
+		http.Dir("assets/"),
+	)
 	middleware := Middleware{}
-	middleware.Add(unauthenticatedRouter)
-	middleware.Add(http.HandlerFunc(AuthenticateRequest))
-	middleware.Add(authenticatedRouter)
+	middleware.Add(router)
 
 	fmt.Printf("Serving requests : %s%s", time.Now(), "\n")
 
-	http.ListenAndServe(":3000", middleware)
+	log.Fatal(http.ListenAndServe(":3000", middleware))
 }
 
 // Creates a new router
@@ -33,7 +31,7 @@ func NewRouter() *httprouter.Router {
 	router := httprouter.New()
 
 	// Note this was
-//	router.NotFound = func(http.ResponseWriter, *http.Request) {}
+	//	router.NotFound = func(http.ResponseWriter, *http.Request) {}
 
 	router.NotFound = http.HandlerFunc(func(http.ResponseWriter, *http.Request) {})
 	return router
