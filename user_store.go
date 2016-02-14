@@ -42,18 +42,18 @@ func (store FileUserStore) Save(user User) error {
 }
 
 func (store FileUserStore) Find(id string) (*User, error) {
-	return getUserByKey(store, id)
+	return store.getUserByKey(id)
 }
 
 func (store FileUserStore) FindByUsername(username string) (*User, error) {
-	return getUserByKey(store, username)
+	return store.getUserByKey(username)
 }
 
 func (store FileUserStore) FindByEmail(email string) (*User, error) {
-	return getUserByKey(store, email)
+	return store.getUserByKey(email)
 }
 
-func getUserByKey(store FileUserStore, key string) (*User, error) {
+func (store FileUserStore) getUserByKey(key string) (*User, error) {
 	if key == "" {
 		return nil, nil
 	}
