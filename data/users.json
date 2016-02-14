@@ -1,0 +1,76 @@
+{
+  "Users": {
+    "another": {
+      "ID": "usr_Wn9kK2zZVz",
+      "Email": "one",
+      "HashedPassword": "$2a$10$em0CFzLkcS6hEiUZ6fTm6./22wqIafEvy5/KkxKh8tpYQFJMOkK6K",
+      "Username": "another"
+    },
+    "foo2@bar.com": {
+      "ID": "usr_cYFJdSGfAV",
+      "Email": "foo2@bar.com",
+      "HashedPassword": "$2a$10$SIRWYNpKwCaHdDHSwydHquNv7W5p.pOpcpt.N6j6pntjwQYqGUE5m",
+      "Username": "foobar2"
+    },
+    "foo3@bar.com": {
+      "ID": "usr_FiMeIJtXQl",
+      "Email": "foo3@bar.com",
+      "HashedPassword": "$2a$10$.i624l8wHLtEFFeQwS/RbeK5j1LBg3MoGYZnp3dapjfgoCfZUEfhW",
+      "Username": "foobar3"
+    },
+    "foo@bar.com": {
+      "ID": "usr_iEwxceCZDk",
+      "Email": "foo@bar.com",
+      "HashedPassword": "$2a$10$M5wtqCZSv7pzXR9OKBaby.9XA2wh2QaWQD.4.BUi65X/l.wLa.21q",
+      "Username": "foobar"
+    },
+    "foobar": {
+      "ID": "usr_iEwxceCZDk",
+      "Email": "foo@bar.com",
+      "HashedPassword": "$2a$10$M5wtqCZSv7pzXR9OKBaby.9XA2wh2QaWQD.4.BUi65X/l.wLa.21q",
+      "Username": "foobar"
+    },
+    "foobar2": {
+      "ID": "usr_cYFJdSGfAV",
+      "Email": "foo2@bar.com",
+      "HashedPassword": "$2a$10$SIRWYNpKwCaHdDHSwydHquNv7W5p.pOpcpt.N6j6pntjwQYqGUE5m",
+      "Username": "foobar2"
+    },
+    "foobar3": {
+      "ID": "usr_FiMeIJtXQl",
+      "Email": "foo3@bar.com",
+      "HashedPassword": "$2a$10$.i624l8wHLtEFFeQwS/RbeK5j1LBg3MoGYZnp3dapjfgoCfZUEfhW",
+      "Username": "foobar3"
+    },
+    "one": {
+      "ID": "usr_Wn9kK2zZVz",
+      "Email": "one",
+      "HashedPassword": "$2a$10$em0CFzLkcS6hEiUZ6fTm6./22wqIafEvy5/KkxKh8tpYQFJMOkK6K",
+      "Username": "another"
+    },
+    "usr_FiMeIJtXQl": {
+      "ID": "usr_FiMeIJtXQl",
+      "Email": "foo3@bar.com",
+      "HashedPassword": "$2a$10$.i624l8wHLtEFFeQwS/RbeK5j1LBg3MoGYZnp3dapjfgoCfZUEfhW",
+      "Username": "foobar3"
+    },
+    "usr_Wn9kK2zZVz": {
+      "ID": "usr_Wn9kK2zZVz",
+      "Email": "one",
+      "HashedPassword": "$2a$10$em0CFzLkcS6hEiUZ6fTm6./22wqIafEvy5/KkxKh8tpYQFJMOkK6K",
+      "Username": "another"
+    },
+    "usr_cYFJdSGfAV": {
+      "ID": "usr_cYFJdSGfAV",
+      "Email": "foo2@bar.com",
+      "HashedPassword": "$2a$10$SIRWYNpKwCaHdDHSwydHquNv7W5p.pOpcpt.N6j6pntjwQYqGUE5m",
+      "Username": "foobar2"
+    },
+    "usr_iEwxceCZDk": {
+      "ID": "usr_iEwxceCZDk",
+      "Email": "foo@bar.com",
+      "HashedPassword": "$2a$10$M5wtqCZSv7pzXR9OKBaby.9XA2wh2QaWQD.4.BUi65X/l.wLa.21q",
+      "Username": "foobar"
+    }
+  }
+}

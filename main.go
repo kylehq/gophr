@@ -18,11 +18,14 @@ func main() {
 		"/assets/*filepath",
 		http.Dir("assets/"),
 	)
+	// Add user route handler
+	router.Handle("GET", "/register", HandleUserNew)
+	router.Handle("POST", "/register", HandleUserCreate)
+
 	middleware := Middleware{}
 	middleware.Add(router)
 
 	fmt.Printf("Serving requests : %s%s", time.Now(), "\n")
-
 	log.Fatal(http.ListenAndServe(":3000", middleware))
 }
 
