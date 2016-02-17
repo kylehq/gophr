@@ -1,2 +1,4 @@
 .idea/
 /gophr
+.DS_Store
+/data
