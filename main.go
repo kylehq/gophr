@@ -11,20 +11,24 @@ import (
 )
 
 func main() {
-
 	router := NewRouter()
 	router.Handle("GET", "/", HandleHome)
+	router.Handle("GET", "/register", HandleUserNew)
+	router.Handle("POST", "/register", HandleUserCreate)
+	router.Handle("GET", "/login", HandleSessionNew)
+	router.Handle("POST", "/login", HandleSessionCreate)
 	router.ServeFiles(
 		"/assets/*filepath",
 		http.Dir("assets/"),
 	)
-	// Add user route handler
-	router.Handle("GET", "/register", HandleUserNew)
-	router.Handle("POST", "/register", HandleUserCreate)
+
+	secureRouter := NewRouter()
+	secureRouter.Handle("GET", "/sign-out", HandleSessionDestroy)
 
 	middleware := Middleware{}
 	middleware.Add(router)
-
+	middleware.Add(http.HandlerFunc(RequireLogin))
+	middleware.Add(secureRouter)
 	fmt.Printf("Serving requests : %s%s", time.Now(), "\n")
 	log.Fatal(http.ListenAndServe(":3000", middleware))
 }

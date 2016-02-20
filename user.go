@@ -55,3 +55,23 @@ func NewUser(username, email, password string) (User, error) {
 	user.ID = GenerateID("usr", userIDLength)
 	return user, err
 }
+
+func FindUser(username, password string) (*User, error) {
+	out := &User{
+		Username: username,
+	}
+	existingUser, err := globalUserStore.FindByUsername(username)
+	if err != nil {
+		return out, err
+	}
+	if existingUser == nil {
+		return out, errCredentialsIncorrect
+	}
+	if bcrypt.CompareHashAndPassword(
+		[]byte(existingUser.HashedPassword),
+		[]byte(password),
+	) != nil {
+		return out, errCredentialsIncorrect
+	}
+	return existingUser, nil
+}
