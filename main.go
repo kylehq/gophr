@@ -43,15 +43,23 @@ func main() {
 	router.Handle("POST", "/register", HandleUserCreate)
 	router.Handle("GET", "/login", HandleSessionNew)
 	router.Handle("POST", "/login", HandleSessionCreate)
+	router.Handle("GET", "/image/:imageID", HandleImageShow)
+	router.Handle("GET", "/user/:userID", HandleUserShow)
 	router.ServeFiles(
 		"/assets/*filepath",
 		http.Dir("assets/"),
+	)
+	router.ServeFiles(
+		"/im/*filepath",
+		http.Dir("data/images/"),
 	)
 
 	secureRouter := NewRouter()
 	secureRouter.Handle("GET", "/sign-out", HandleSessionDestroy)
 	secureRouter.Handle("GET", "/account", HandleUserEdit)
 	secureRouter.Handle("POST", "/account", HandleUserUpdate)
+	secureRouter.Handle("GET", "/images/new", HandleImageNew)
+	secureRouter.Handle("POST", "/images/new", HandleImageCreate)
 
 	middleware := Middleware{}
 	middleware.Add(router)

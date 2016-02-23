@@ -40,7 +40,7 @@ func (store *DBImageStore) Save(image *Image) error {
 func (store *DBImageStore) Find(id string) (*Image, error) {
 	row := store.db.QueryRow(
 		`
-		SELECT id, user_id, name, location, description, size, ➥created_at
+		SELECT id, user_id, name, location, description, size, created_at
 			FROM images
 			WHERE id = ?`,
 		id,
